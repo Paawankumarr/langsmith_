@@ -15,11 +15,17 @@ prompt2 = PromptTemplate(
     input_variables=['text']
 )
 
-model = ChatOpenAI()
+model = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
 
 parser = StrOutputParser()
 
 chain = prompt1 | model | parser | prompt2 | model | parser
+
+
+# adding new tags
+# make a dictionary with config name  and add value and meta data
+#and pass the dictionary to the invoke method
+
 
 result = chain.invoke({'topic': 'Unemployment in India'})
 
